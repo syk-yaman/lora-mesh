@@ -26,7 +26,7 @@ uint8_t readReg(uint8_t reg, const void* pBuf, size_t size)
   }
   uint8_t * _pBuf = (uint8_t *)pBuf;
   Wire.beginTransmission(address);
-  byte arr[] = {0xae};
+  byte arr[] = {0x10};
   Wire.write(arr, 1);
   if ( Wire.endTransmission() != 0) {
     return 0;
