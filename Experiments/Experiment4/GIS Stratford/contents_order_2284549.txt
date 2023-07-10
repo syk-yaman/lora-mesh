@@ -1,0 +1,148 @@
+********************************************************************
+
+EDINA DIGIMAP:
+
+DIGITAL DATA SUPPLY
+
+********************************************************************
+
+
+This data is distributed under licence by:
+
+    EDINA
+    University of Edinburgh
+    https://edina.ac.uk
+
+    Tel:    0131 650 3302
+    Fax:    0131 650 3308
+    Email:  digimap@ed.ac.uk
+		
+
+
+---------------------------------------------------------
+
+CONTENTS
+
+You will have received the data files listed below, each product and area has
+its own folder. Note that each data folder contains a conditions.txt file
+which states the conditions for use of the data within. These conditions can
+vary between different data products.
+
+
+
+-------------------------------------------------------------------------------
+Folder:           vml-raster_clr_5084715
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS VectorMap® Local
+Version:          April 2023
+Format:           TIFF
+Theme:            Full Colour
+Area:             2 tiles
+Tiles:
+ 
+Tile Name:        tq38ne_clipped
+Extent:           536548.8556581866, 185000.0 - 538713.1475328258, 186079.37616572558
+Last Amended:     1 April 2023
+  
+Tile Name:        tq38se_clipped
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 185000.0
+Last Amended:     1 April 2023
+  
+The tiles listed above have been combined to create vml-raster_5084715.tif.
+  -------------------------------------------------------------------------------
+Folder:           terrain-5-dtm_5084714
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS Terrain 5
+Version:          April 2023
+Format:           ASC
+Theme:            N/A
+Area:             2 tiles
+Tiles:
+ 
+Tile Name:        tq38ne
+Extent:           535000.0, 185000.0 - 540000.0, 190000.0
+Last Amended:     28 August 2022
+  
+Tile Name:        tq38se
+Extent:           535000.0, 180000.0 - 540000.0, 185000.0
+Last Amended:     28 August 2022
+    -------------------------------------------------------------------------------
+Folder:           MasterMap Water Network_5084713
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS MasterMap Water Network
+Version:          April 2023
+Format:           GML3
+Theme:            N/A
+Area:             2 tiles
+Tiles:
+ 
+Tile Name:        tq38se
+Extent:           535000.0, 180000.0 - 540000.0, 185000.0
+Last Amended:     20 March 2023
+  
+Tile Name:        tq38ne
+Extent:           535000.0, 185000.0 - 540000.0, 190000.0
+Last Amended:     20 March 2023
+    -------------------------------------------------------------------------------
+Folder:           mastermap-topo_5084712
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS MasterMap® Topography Layer
+Version:          December 2022
+Format:           FileGeoDatabase
+Theme:            N/A
+Area:             4.1147176757860855 square kilometres
+Layers:
+                  Administrative Boundaries
+                  Buildings
+                  Land
+                  Rail
+                  Roads, Tracks And Paths
+                  Structures
+                  Terrain And Height
+                  Water
+Chunks:
+ 
+Filename:         mastermap-topo_5084712/mastermap-topo_5084712.gdb
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Last Amended:     8 December 2022
+    -------------------------------------------------------------------------------
+Folder:           MasterMap Greenspace_5084711
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS MasterMap Greenspace
+Version:          April 2023
+Format:           SHAPE
+Theme:            N/A
+Area:             2 tiles
+Tiles:
+ 
+Tile Name:        tq38se
+Extent:           535000.0, 180000.0 - 540000.0, 185000.0
+Last Amended:     17 April 2023
+  
+Tile Name:        tq38ne
+Extent:           535000.0, 185000.0 - 540000.0, 190000.0
+Last Amended:     17 April 2023
+    -------------------------------------------------------------------------------
+Folder:           mastermap_building_heights_5084710
+Extent:           536438.0650649917, 183050.28609952558 - 539079.1311970917, 186079.37616572558
+Date Ordered:     5 June 2023 at 12:22:18
+Product:          OS MasterMap Building Height Attribute
+Version:          October 2021
+Format:           FileGeoDatabase
+Theme:            N/A
+Area:             2 tiles
+Tiles:
+ 
+Tile Name:        tq38se
+Extent:           535000.0, 180000.0 - 540000.0, 185000.0
+Last Amended:     2 September 2021
+  
+Tile Name:        tq38ne
+Extent:           535000.0, 185000.0 - 540000.0, 190000.0
+Last Amended:     2 September 2021
+     

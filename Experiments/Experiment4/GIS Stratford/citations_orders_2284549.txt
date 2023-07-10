@@ -1,0 +1,19 @@
+The citations in this document should be used to reference the maps and data
+when they have been included in any essays, dissertations or other academic
+works. You should cite the data even if it doesn't appear as an image or map
+in your work if it has been used to generate findings or a new dataset that is
+used.
+
+There is one entry for each product and selected area; you can edit the
+citation if you only use part of the data it covers. Any citations provided
+below are a guide only and should be given in addition to any requirement to
+acknowledge sources and copyright of any data used or any local guidance
+provided:
+
+OS VectorMap® Local [TIFF geospatial data], Scale 1:10000, Tiles: tq38ne_clipped,tq38se_clipped, Updated: 1 April 2023, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+OS Terrain 5 [ASC geospatial data], Scale 1:10000, Tiles: tq38ne,tq38se, Updated: 20 March 2023, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+OS MasterMap Water Network [GML3 geospatial data], Scale 1:2500, Tiles: tq38se,tq38ne, Updated: 20 March 2023, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+OS MasterMap® Topography Layer [FileGeoDatabase geospatial data], Scale 1:1250, Tiles: GB, Updated: 8 December 2022, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+OS MasterMap Greenspace [SHAPE geospatial data], Scale 1:2500, Tiles: tq38se,tq38ne, Updated: 17 April 2023, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+OS MasterMap Building Height Attribute [FileGeoDatabase geospatial data], Scale 1:2500, Tiles: tq38se,tq38ne, Updated: 2 September 2021, Ordnance Survey (GB), Using: EDINA Digimap Ordnance Survey Service, <https://digimap.edina.ac.uk>, Downloaded: 2023-06-05 12:22:18.84
+
