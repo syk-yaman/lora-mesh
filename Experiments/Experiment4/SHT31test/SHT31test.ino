@@ -59,12 +59,12 @@ void loop() {
   // An ~3.0 degC temperature increase can be noted when heater is enabled
   if (loopCnt >= 30) {
     enableHeater = !enableHeater;
-    sht31.heater(enableHeater);
-    Serial.print("Heater Enabled State: ");
-    if (sht31.isHeaterEnabled())
-      Serial.println("ENABLED");
-    else
-      Serial.println("DISABLED");
+    //sht31.heater(enableHeater);
+    //Serial.print("Heater Enabled State: ");
+    //if (sht31.isHeaterEnabled())
+    //  Serial.println("ENABLED");
+    //else
+    //  Serial.println("DISABLED");
 
     loopCnt = 0;
   }
