@@ -34,7 +34,7 @@ lora = LoRa(mode=LoRa.LORA, region= LoRa.EU868)
 lora_mac = int(str(ubinascii.hexlify(lora.mac()))[2:-1], 16)
 
 # read config file, or set default values
-pymesh_config = PymeshConfig.read_config(lora_mac)
+pymesh_config = PymeshConfig.read_config()
 
 #initialize Pymesh
 pymesh = Pymesh(pymesh_config, new_message_cb)
