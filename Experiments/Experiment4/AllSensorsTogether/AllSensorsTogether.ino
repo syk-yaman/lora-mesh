@@ -22,16 +22,14 @@ float Lux;
 
 void loop()
 {
-  uint8_t readbuffer[6];
-  
-  uint8_t command = SHT31_MEAS_HIGHREP_0;
-  
-  //uint8_t cmd[2];
-  //cmd[0] = command >> 8;
-  //cmd[1] = command & 0xFF;
+  //////////////// Light Sensor Section
+  uint8_t readbuffer[6];  
+  uint8_t command = SHT31_MEAS_HIGHREP_0; // MSB section of the command - see datasheet
+  uint8_t command2 = SHT31_MEAS_HIGHREP_1; // LSB section of the command - see datasheet
+
+
   Wire.beginTransmission(SHT31_TempHumiditySensorAddress);
   Wire.write(&command, 1);
-  uint8_t command2 = SHT31_MEAS_HIGHREP_1;
   Wire.write(&command2, 1);
   
   if ( Wire.endTransmission() != 0) {
@@ -44,14 +42,10 @@ void loop()
   }
   
   int32_t stemp = (int32_t)(((uint32_t)readbuffer[0] << 8) | readbuffer[1]); //readbuffer[2] is CRC, ignored for now
-  // simplified (65536 instead of 65535) integer version of:
-  // temp = (stemp * 175.0f) / 65535.0f - 45.0f;
   stemp = ((4375 * stemp) >> 14) - 4500;
   float temp = (float)stemp / 100.0f;
 
   uint32_t shum = ((uint32_t)readbuffer[3] << 8) | readbuffer[4]; //readbuffer[5] is CRC, ignored for now
-  // simplified (65536 instead of 65535) integer version of:
-  // humidity = (shum * 100.0f) / 65535.0f;
   shum = (625 * shum) >> 12;
   float humidity = (float)shum / 100.0f;
 
@@ -61,16 +55,22 @@ void loop()
   Serial.print("humidity:");
   Serial.print(humidity);
   Serial.print("\n");
-
-  ////////////////
-  //readReg(SEN0562_LightSensorAddress, 0x10, buf, 2);              //Register Address 0x10
-  //data = buf[0] << 8 | buf[1];
-  //Lux = (((float)data )/1.2);
-  //Serial.print("LUX:");
-  //Serial.print(Lux);
-  //Serial.print("lx");
-  //Serial.print("\n");
+  
+  Wire.endTransmission();
+  
+  //////////////// Light Sensor Section
   delay(500);
+  readReg(SEN0562_LightSensorAddress, 0x10, buf, 2);              //Register Address 0x10
+  data = buf[0] << 8 | buf[1];
+  Lux = (((float)data )/1.2);
+  Serial.print("LUX:");
+  Serial.print(Lux);
+  Serial.print("lx");
+  Serial.print("\n");
+  Wire.endTransmission();
+  delay(500);
+
+  
 }
 
 uint8_t readReg(uint8_t address, uint8_t reg, const void* pBuf, size_t size)
