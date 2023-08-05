@@ -1,5 +1,5 @@
 #include "Wire.h"
-               //I2C Address 0x23
+               
 uint8_t SHT31_TempHumiditySensorAddress = 0x44;
 uint8_t SEN0562_LightSensorAddress = 0x23;
 
