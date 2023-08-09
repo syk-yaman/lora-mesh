@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Video</title>
+    <meta name="description" content="Video - A-Frame">
+    <script src="aframe-master.js"></script>
+    <script src="play-on-click.js"></script>
+    <script src="hide-on-play.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <video id="OnePoolSreet" play-on-click preload="auto" src="OnePoolSreet.mp4" autoplay loop="true"
+                muted></video>
+        </a-assets>
+
+        <a-videosphere play-on-click autoplay preload="auto" loop="true" src="#OnePoolSreet"></a-videosphere>
+
+
+    </a-scene>
+</body>
+
+</html>
