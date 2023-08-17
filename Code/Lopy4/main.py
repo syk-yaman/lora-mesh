@@ -7,7 +7,7 @@ import machine
 import time
 from _pymesh_config import PymeshConfig
 from _pymesh import Pymesh
-import secrets
+import config
 
 def sub_cb(topic, msg):
    print(msg)
@@ -77,13 +77,13 @@ print("done Pymesh init, CLI is started, h - help/command list, stop - CLI will 
 
 
 wlan = WLAN(mode=WLAN.STA)
-wlan.connect(WIFI_SSID, auth=(WLAN.WPA2, WIFI_PASSWORD), timeout=5000)
+wlan.connect(config.WIFI_SSID, auth=(WLAN.WPA2, config.WIFI_PASSWORD), timeout=5000)
 
 while not wlan.isconnected():  
     machine.idle()
 print("Connected to WiFi\n")
 
-client = MQTTClient(MQTT_ID, MQTT_BROKER,user=MQTT_USER, password=MQTT_PASSWORD, port= MQTT_PORT, keepalive=30, ssl=False, ssl_params={})
+client = MQTTClient(config.MQTT_ID, config.MQTT_BROKER,user= config.MQTT_USER, password= config.MQTT_PASSWORD, port= config.MQTT_PORT, keepalive=30, ssl=False, ssl_params={})
 
 client.set_callback(sub_cb)
 
