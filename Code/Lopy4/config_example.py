@@ -1,3 +1,5 @@
+#Rename this file to config.py after adding your secrets here:
+
 WIFI_SSID = ""
 WIFI_PASSWORD = ""
 
