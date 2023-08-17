@@ -68,17 +68,17 @@ Some explanations:
 
 Basically, just import the generated G-code from FlatCam to Easel. No need for any further settings here, the imported G-code contains all the required settings. Hit Carve and go! - don't forget to watch the first couple of minutes to make sure the CNC is executing the job correctly.
 
-![image-20230815092356217.png](easel)
+![easel.png](easel)
 
 
 
-![image-20230815092621277.png](carvey-1)
+![carvey-1.png](carvey-1)
 
 **Note:** try to not fix the PCB from its edges but only from long edges, as doing this would make it curve from the centre thus not having the same height everywhere.
 
 
 
-![image-20230815092636530.png](carvey-2)
+![carvey-2.png](carvey-2)
 
 
 
