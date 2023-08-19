@@ -11,6 +11,13 @@ import config
 
 from machine import I2C
 
+SEN0562_LIGHT_SENSOR_I2C_ADDRESS = 0x23
+SEN0562_VALUE_REGISTER = 0x10
+
+SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS = 0x44
+SHT31_COMMAND_MEAS_HIGHREP_0 = 0x24 # The MSB of the wanted command
+SHT31_COMMAND_MEAS_HIGHREP_1 = 0x00 # The LSB of the wanted command
+
 def sub_cb(topic, msg):
    print(msg)
 
@@ -48,12 +55,31 @@ def ReadLightSensor():
     i2c = I2C(0)
     i2c = I2C(0, I2C.MASTER) 
     i2c.init(I2C.MASTER, baudrate=20000)
-    lightI2C = i2c.readfrom_mem(0x23, 0x10, 2)
+    lightI2C = i2c.readfrom_mem(SEN0562_LIGHT_SENSOR_I2C_ADDRESS, SEN0562_VALUE_REGISTER, 2)
     lightConverted = lightI2C[0] << 8 | lightI2C[1]
-    lightValue = lightConverted / 1.2
+    lightValue = lightConverted / 1.2  #according to documentation
     i2c.deinit() 
     return lightValue
 
+def ReadHumTempSensor():
+    i2c = I2C(0)
+    i2c = I2C(0, I2C.MASTER) 
+    i2c.init(I2C.MASTER, baudrate=20000)
+    i2c.writeto(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, SHT31_COMMAND_MEAS_HIGHREP_0)
+    i2c.writeto(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, SHT31_COMMAND_MEAS_HIGHREP_1)
+
+    readbuffer = i2c.readfrom(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, 6)
+    
+    stemp = readbuffer[0] << 8 | readbuffer[1] #readbuffer[2] is CRC, ignored for now
+    stemp = ((4375.0 * stemp) >> 14) - 4500
+    temperature = stemp / 100.0
+
+    shum = readbuffer[3] << 8 | readbuffer[4] #readbuffer[5] is CRC, ignored for now
+    shum = (625.0 * shum) >> 12
+    humidity = shum / 100.0
+    
+    i2c.deinit() 
+    return (temperature, humidity)
 
 pycom.heartbeat(False)
 
@@ -115,12 +141,20 @@ client = MQTTClient(config.MQTT_ID, config.MQTT_BROKER,user= config.MQTT_USER, p
 
 client.set_callback(sub_cb)
 
-time.sleep(10)
+time.sleep(5)
 client.connect()
 client.subscribe(topic="yaman/feeds/test")
 
 
 while True:
+    print("Light Sensor")
+    print(ReadLightSensor())
+    print("HumTemp Sensor")
+    humtemp = ReadHumTempSensor()
+    print(humtemp[0])
+    print(humtemp[1])
+
+    print("/n")
     print("Sending ON")
     client.publish(topic="yaman/feeds/test", msg="ON")
     time.sleep(1)
