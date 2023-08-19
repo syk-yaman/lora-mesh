@@ -2,6 +2,7 @@ from machine import I2C, Pin
 import time
 
 ########## Modified by Yaman Kalaji to be compatible with Lopy4 API ##########
+########## Taken from https://github.com/rsc1975/micropython-sht30  ##########
 
 __version__ = '0.2.1'
 __author__ = 'Roberto Sánchez'
