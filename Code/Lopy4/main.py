@@ -10,6 +10,7 @@ from _pymesh import Pymesh
 import config
 
 from machine import I2C
+from sht30 import SHT30
 
 SEN0562_LIGHT_SENSOR_I2C_ADDRESS = 0x23
 SEN0562_VALUE_REGISTER = 0x10
@@ -62,24 +63,9 @@ def ReadLightSensor():
     return lightValue
 
 def ReadHumTempSensor():
-    i2c = I2C(0)
-    i2c = I2C(0, I2C.MASTER) 
-    i2c.init(I2C.MASTER, baudrate=20000)
-    i2c.writeto(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, SHT31_COMMAND_MEAS_HIGHREP_0)
-    i2c.writeto(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, SHT31_COMMAND_MEAS_HIGHREP_1)
-
-    readbuffer = i2c.readfrom(SHT31_TEMP_HUMIDITY_SENSOR_I2C_ADDRESS, 6)
-    
-    stemp = readbuffer[0] << 8 | readbuffer[1] #readbuffer[2] is CRC, ignored for now
-    stemp = ((4375.0 * stemp) >> 14) - 4500
-    temperature = stemp / 100.0
-
-    shum = readbuffer[3] << 8 | readbuffer[4] #readbuffer[5] is CRC, ignored for now
-    shum = (625.0 * shum) >> 12
-    humidity = shum / 100.0
-    
-    i2c.deinit() 
-    return (temperature, humidity)
+    tempHumiditySensor = SHT30()
+    readings = tempHumiditySensor.measure()
+    return readings
 
 pycom.heartbeat(False)
 
@@ -150,9 +136,7 @@ while True:
     print("Light Sensor")
     print(ReadLightSensor())
     print("HumTemp Sensor")
-    humtemp = ReadHumTempSensor()
-    print(humtemp[0])
-    print(humtemp[1])
+    print(ReadHumTempSensor())
 
     print("/n")
     print("Sending ON")
