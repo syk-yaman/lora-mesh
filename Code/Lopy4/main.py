@@ -65,6 +65,7 @@ def ReadLightSensor():
 def ReadHumTempSensor():
     tempHumiditySensor = SHT30()
     readings = tempHumiditySensor.measure()
+    tempHumiditySensor.terminateI2C()
     return readings
 
 pycom.heartbeat(False)

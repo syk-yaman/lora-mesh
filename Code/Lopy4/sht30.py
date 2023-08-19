@@ -1,12 +1,14 @@
 from machine import I2C, Pin
 import time
 
+########## Modified by Yaman Kalaji to be compatible with Lopy4 API ##########
+
 __version__ = '0.2.1'
 __author__ = 'Roberto Sánchez'
 __license__ = "Apache License 2.0. https://www.apache.org/licenses/LICENSE-2.0"
 
 # I2C address B 0x45 ADDR (pin 2) connected to VDD
-DEFAULT_I2C_ADDRESS = 0x45
+DEFAULT_I2C_ADDRESS = 0x44
 
 class SHT30():
     """
@@ -37,7 +39,8 @@ class SHT30():
     DISABLE_HEATER_CMD = b'\x30\x66'
 
     def __init__(self, scl_pin=5, sda_pin=4, delta_temp = 0, delta_hum = 0, i2c_address=DEFAULT_I2C_ADDRESS):
-        self.i2c = I2C(scl=Pin(scl_pin), sda=Pin(sda_pin))
+        self.i2c = I2C(0, I2C.MASTER)
+        self.i2c.init(I2C.MASTER, baudrate=20000)
         self.i2c_addr = i2c_address
         self.set_delta(delta_temp, delta_hum)
         time.sleep_ms(50)
@@ -82,14 +85,14 @@ class SHT30():
         The responsed data is validated by CRC
         """
         try:
-            self.i2c.start(); 
+            #self.i2c.start(); ########## Modified to be compatible with Lopy4 API
             self.i2c.writeto(self.i2c_addr, cmd_request); 
             if not response_size:
                 self.i2c.stop(); 	
                 return
             time.sleep_ms(read_delay_ms)
             data = self.i2c.readfrom(self.i2c_addr, response_size) 
-            self.i2c.stop(); 
+            #self.i2c.stop(); ########## Modified to be compatible with Lopy4 API
             for i in range(response_size//3):
                 if not self._check_crc(data[i*3:(i+1)*3]): # pos 2 and 5 are CRC
                     raise SHT30Error(SHT30Error.CRC_ERROR)
@@ -113,6 +116,10 @@ class SHT30():
         """
         return self.send_cmd(SHT30.RESET_CMD, None); 
 
+    def terminateI2C(self): ########## Modified to be compatible with Lop4 API
+        self.i2c.deinit()
+        return
+     
     def status(self, raw=False):
         """
         Get the sensor status register. 
