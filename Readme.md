@@ -82,6 +82,12 @@ All the software applications are packed into one [Docker image](/Server/docker-
 
 ### Hardware PCB and schematic
 
+<p align="center">
+<img src="/PCB/PCB-assembeled" width="500">
+</p>
+
+
+
 <img src="/PCB/PCB-assembeled" width="500">
 
 
