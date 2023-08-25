@@ -58,10 +58,6 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
 ### Used components and tools
 
-Hardware:
-
- - 
-
 Software:
 
  - [InfluxDB](https://www.influxdata.com/)
@@ -73,7 +69,7 @@ All the software applications are packed into one [Docker image](/Server/docker-
 
 ### Hardware schematic
 
-![Hardware schematic](/PCB/schematic.png)
+![Hardware schematic](/PCB/Schematic.png)
 
 ### Highlights
 
