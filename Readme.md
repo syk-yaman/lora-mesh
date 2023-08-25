@@ -54,6 +54,8 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
 ## Project Overview
 
+![Final prototype](Docs/final-prototype.png)
+
 <p align="center">
 <img src="/Docs/system-overview.drawio.png" width="500">
 </p>
