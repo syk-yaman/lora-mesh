@@ -54,9 +54,9 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
 ## Project Overview
 
+<p align="center">
 <img src="/Docs/system-overview.drawio.png" width="500">
-
-
+</p>
 
 ## Building
 
@@ -83,18 +83,12 @@ All the software applications are packed into one [Docker image](/Server/docker-
 ### Hardware PCB and schematic
 
 <p align="center">
-<img src="/PCB/PCB-assembeled" width="500">
+<img src="/PCB/PCB-assembeled.jpg" width="500">
 </p>
 
-
-
-<img src="/PCB/PCB-assembeled" width="500">
-
-
-
+<p align="center">
 <img src="/PCB/PCB.jpg" width="400">
-
-
+</p>
 
 ![Hardware schematic](/PCB/Schematic.png)
 
