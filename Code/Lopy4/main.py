@@ -1,7 +1,6 @@
 import pycom
 import time
 from mqtt import MQTTClient
-# from mqtt import MQTTClient_lib as MQTTClient
 from network import WLAN
 import machine
 import time
@@ -11,6 +10,14 @@ import config
 
 from machine import I2C
 from sht30 import SHT30
+
+import ubinascii
+from network import LoRa
+
+# 0 = Child
+# 1 = Router
+# 2 = Leader
+NODE_TYPE = 1 
 
 SEN0562_LIGHT_SENSOR_I2C_ADDRESS = 0x23
 SEN0562_VALUE_REGISTER = 0x10
@@ -22,7 +29,7 @@ SHT31_COMMAND_MEAS_HIGHREP_1 = 0x00 # The LSB of the wanted command
 def sub_cb(topic, msg):
    print(msg)
 
-def send_mqtt_message():
+def send_mqtt_message(message):
     while not wlan.isconnected():  
         machine.idle()
     print("Connected to WiFi\n")
@@ -35,10 +42,10 @@ def send_mqtt_message():
     client.connect()
     client.subscribe(topic="yaman/feeds/test")
     print("Recieved from mesh")
-    client.publish(topic="yaman/feeds/test", msg="Recieved")
+    client.publish(topic="yaman/feeds/recieved", msg=message)
 
 def new_message_cb(rcv_ip, rcv_port, rcv_data):
-    send_mqtt_message()
+    send_mqtt_message(rcv_data)
     ''' callback triggered when a new packet arrived '''
     print('Incoming %d bytes from %s (port %d):' %
             (len(rcv_data), rcv_ip, rcv_port))
@@ -70,16 +77,21 @@ def ReadHumTempSensor():
 
 pycom.heartbeat(False)
 
-# read config file, or set default values
-pymesh_config = PymeshConfig.read_config()
-pymesh = Pymesh(pymesh_config, new_message_cb)
+lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
+#This is where nodes can identify each other and belong to a one network
+masterkey = ubinascii.unhexlify("11bcc8573c9c70c12ee8323bd9f051d9")  
+pymesh = lora.Mesh(key=masterkey)
+
+
 #initialize Pymesh
 
-# mac = pymesh.mac()
-# if mac > 10:
-#     pymesh.end_device(True)
-# elif mac == 5:
-#     pymesh.leader_priority(255)
+#mac = pymesh.mac()
+#if mac > 10:
+#    pymesh.end_device(True)
+#elif mac == 5:
+#    pymesh.leader_priority(255)
+
+print("Waiting to be connected")
 
 while not pymesh.is_connected():
     print(pymesh.status_str())
@@ -88,19 +100,19 @@ while not pymesh.is_connected():
 # send message to the Node having MAC address 5
 pymesh.send_mess(5, "Hello World")
 
-# def new_br_message_cb(rcv_ip, rcv_port, rcv_data, dest_ip, dest_port):
-#     ''' callback triggered when a new packet arrived for the current Border Router,
-#     having destination an IP which is external from Mesh '''
-#     print('Incoming %d bytes from %s (port %d), to external IPv6 %s (port %d)' %
-#             (len(rcv_data), rcv_ip, rcv_port, dest_ip, dest_port))
-#     print(rcv_data)
+def new_br_message_cb(rcv_ip, rcv_port, rcv_data, dest_ip, dest_port):
+    ''' callback triggered when a new packet arrived for the current Border Router,
+    having destination an IP which is external from Mesh '''
+    print('Incoming %d bytes from %s (port %d), to external IPv6 %s (port %d)' %
+            (len(rcv_data), rcv_ip, rcv_port, dest_ip, dest_port))
+    print(rcv_data)
+    send_mqtt_message(rcv_data)
+    # user code to be inserted, to send packet to the designated Mesh-external interface
+    # ...
+    return
 
-#     # user code to be inserted, to send packet to the designated Mesh-external interface
-#     # ...
-#     return
-
-# add current node as Border Router, with a priority and a message handler callback
-# pymesh.br_set(PymeshConfig.BR_PRIORITY_NORM, new_br_message_cb)
+#add current node as Border Router, with a priority and a message handler callback
+pymesh.br_set(PymeshConfig.BR_PRIORITY_NORM, new_br_message_cb)
 
 # remove Border Router function from current node
 # pymesh.br_remove()
@@ -130,20 +142,35 @@ client.set_callback(sub_cb)
 
 time.sleep(5)
 client.connect()
-client.subscribe(topic="yaman/feeds/test")
+client.subscribe(topic="yaman/feeds/control")
 
+if NODE_TYPE == 0: # 0 = Child
+    time.sleep(1)
 
-while True:
     print("Light Sensor")
     Light = ReadLightSensor()
     print(Light)
     print("HumTemp Sensor")
     HumTemp = ReadHumTempSensor()
     print(HumTemp)
-
-    client.publish(topic="loraMesh/BR1/Light", msg=str(Light))
-    client.publish(topic="loraMesh/BR1/Temperature", msg=str(HumTemp[0]))
-    client.publish(topic="loraMesh/BR1/Humidity", msg=str(HumTemp[1]))
+    client.publish(topic="loraMesh/Child1/Light", msg=str(Light))
+    client.publish(topic="loraMesh/Child1/Temperature", msg=str(HumTemp[0]))
+    client.publish(topic="loraMesh/Child1/Humidity", msg=str(HumTemp[1]))
     client.check_msg()
 
-    time.sleep(10)
+    pymesh.send_mess_external("1:2:3::4", 5555, Light)
+    pymesh.send_mess_external("1:2:3::4", 5555, HumTemp[0])
+    pymesh.send_mess_external("1:2:3::4", 5555, HumTemp[1])
+
+    time.sleep(1)
+    machine.deepsleep(600000)
+
+elif NODE_TYPE == 1: # 1 = Router
+    while True:
+        print("Light Sensor")
+        print("HumTemp Sensor")
+
+        client.publish(topic="loraMesh/Router1/Test", msg= "Connected")
+        client.check_msg()
+
+        time.sleep(10)
