@@ -44,19 +44,32 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
 4. **PCB**
 
-   The electronic side of the project. This section contains Eagle files and CAM outputs sent to PCB manufacturers.
+   The electronic side of the project. This section contains Eagle files and CAM outputs sent to PCB manufacturers. Also, a [manufacturing tutorial](/PCB/CNC) using a CNC is available.
 
 5. **Server**
 
    Docker Composer file for InfluxDB, Grafana and MQTT broker. Basically, all data acquisition is being managed by this Docker image.
 
+6. 
+
 ## Project Overview
 
-![System overview](/Docs/system-overview.drawio.png)
+<img src="/Docs/system-overview.drawio.png" width="500">
+
+
 
 ## Building
 
 ### Used components and tools
+
+Hardware:
+
+* [Lopy4](https://www.adafruit.com/product/3689): a dev kit based on ESP32 that has LoRa, Wifi, Sigfox and Bluetooth communication capability.
+* [SHT-30](https://www.adafruit.com/product/4099): a weatherproof humidity and temperature sensor.
+* [Gravity SEN0562](https://www.dfrobot.com/product-2664.html): a weatherproof light sensor.
+* [DC Solar charger (BQ24074)](https://www.adafruit.com/product/4755)
+* [Solar panel](https://coolcomponents.co.uk/products/solar-panel-1-watt): 1 Watt, 10x80 cm.
+* 2000 mA 3.7v battery
 
 Software:
 
@@ -67,9 +80,19 @@ Software:
 
 All the software applications are packed into one [Docker image](/Server/docker-compose.yml) that you can use easily.
 
-### Hardware schematic
+### Hardware PCB and schematic
+
+<img src="/PCB/PCB-assembeled" width="500">
+
+
+
+<img src="/PCB/PCB.jpg" width="400">
+
+
 
 ![Hardware schematic](/PCB/Schematic.png)
+
+
 
 ### Highlights
 
