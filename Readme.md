@@ -124,13 +124,15 @@ All the software applications are packed into one [Docker image](/Server/docker-
 
 #### Heatmaps
 
-![img](Docs/images/Heatmap.jpg)
+![](/Experiments/Experiment1/Results/Experiment1-RSSI-QEOP-heatmap.jpg)
 
-![](Experiments/Experiment2/Results/Experiment2-RSSI-QEOP-heatmap.jpg)
+![](/Experiments/Experiment2/Results/Experiment2-RSSI-QEOP-heatmap.jpg)
 
-![](Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-1.jpg)
+![](/Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-1.jpg)
 
-![](Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-2.jpg)
+![](/Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-2.jpg)
+
+![img](/Docs/images/Heatmap.jpg)
 
 #### Current consumption analysis
 
