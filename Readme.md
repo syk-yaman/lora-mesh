@@ -16,7 +16,6 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
    - [QEOP 3D Models](</Assets/QEOP 3D models/>)
    - [LoRa Gateway 3D Enclosures](</Assets/3D Enclosures/>)
-   - [Data Table asset files](</Assets/>)
 
 2. **Code**
 
@@ -38,19 +37,32 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
      A web page built using [A-Frame](https://aframe.io/) to visualise 360 videos of the QEOP on VR Headsets.
 
+   - [Data Table](</Code/DataTable>)
+     The data files projected on the physical map including the final calibrated [Base Map](/Code/DataTable/BaseMap.jpg).
+
 3. **Docs**
 
    This folder holds different kinds of documentation and images produced during project life time.
 
 4. **PCB**
 
-   The electronic side of the project. This section contains Eagle files and CAM outputs sent to PCB manufacturers. Also, a [manufacturing tutorial](/PCB/CNC) using a CNC is available.
+   The electronic side of the project. This section contains Eagle files and CAM outputs sent to PCB manufacturers. Also, a [CNC manufacturing tutorial](/PCB/CNC) is available.
 
 5. **Server**
 
    Docker Composer file for InfluxDB, Grafana and MQTT broker. Basically, all data acquisition is being managed by this Docker image.
 
-6. 
+6. **Experiments**
+   This section includes the multiple experiments done throughout the project.
+
+   - [Experiment #1](/Experiments/Experiment1): First heatmap between LoRa indoor gateway and MRK1310.
+   - [Experiment #2](/Experiments/Experiment2): Heatmap between two LoRa nodes (Both MRK1310).
+   - [Experiment #3](/Experiments/Experiment3): Heatmap between two LoRa nodes (Both Lopy4), contains a [geolocated dataset](/Experiments/Experiment3/Results/heatmap/Experiment3-LoRa-RSSI-heatmap-QEOP-OPS.csv).
+   - [Experiment #4](/Experiments/Experiment4): Contains a [topographic study](/Experiments/Experiment4/GIS Stratford/) using QGIS, and a [detailed deployment plan](/Experiments/Experiment4/Deployment plan/) for LoRa nodes in the QEOP.
+   - [Experiment #5](/Experiments/Experiment5): Basic Pymesh experiments. 
+   - [Experiment #6](/Experiments/Experiment6): Basic MQTT experiments.
+
+   
 
 ## Project Overview
 
@@ -94,29 +106,39 @@ All the software applications are packed into one [Docker image](/Server/docker-
 
 ![Hardware schematic](/PCB/Schematic.png)
 
-
-
-### Highlights
-
- - 
-
 ## Results
 
-|       Grafana dashboard       |       InfluxDB dashboard       |           MQTT feed            |
-| :---------------------------: | :----------------------------: | :----------------------------: |
-| ![](/Docs/grafana-result.jpg) | ![](/Docs/influxdb-result.jpg) | ![MQTT](/Docs/mqtt-result.jpg) |
+#### The Data Table
 
+![image-20230826014223380](/Docs/images/DataTable2.jpg)
 
+![image-20230826014128633](/Docs/images/DataTable-LoRa-RSSI.jpg)
 
-## Future work
+ ![image-20230826014301770](/Docs/images/DataTable-LoRa-RSSI-indoor.jpg)
 
-- 
+![](/Docs/images/DataTable.jpg)
 
-## Resources and references
+#### Grafana Dashboard
 
-- 
+![img](/Docs/images/Grafana.jpg)
 
- 
+#### Heatmaps
+
+![img](Docs/images/Heatmap.jpg)
+
+![](Experiments/Experiment2/Results/Experiment2-RSSI-QEOP-heatmap.jpg)
+
+![](Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-1.jpg)
+
+![](Experiments/Experiment2/Results/Experiment2-RSSI-OPS-building-heatmap-2.jpg)
+
+#### Current consumption analysis
+
+![](Code/Current Analysis/deepsleep.png)
+
+![](Code/Current Analysis/deepsleep-spike.png)
+
+![](Code/Current Analysis/router-node.png)
 
 ## License
 
