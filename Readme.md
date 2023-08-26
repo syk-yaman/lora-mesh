@@ -58,7 +58,7 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
    - [Experiment #1](/Experiments/Experiment1): First heatmap between LoRa indoor gateway and MRK1310.
    - [Experiment #2](/Experiments/Experiment2): Heatmap between two LoRa nodes (Both MRK1310).
    - [Experiment #3](/Experiments/Experiment3): Heatmap between two LoRa nodes (Both Lopy4), contains a [geolocated dataset](/Experiments/Experiment3/Results/heatmap/Experiment3-LoRa-RSSI-heatmap-QEOP-OPS.csv).
-   - [Experiment #4](/Experiments/Experiment4): Contains a [topographic study](/Experiments/Experiment4/GIS Stratford/) using QGIS, and a [detailed deployment plan](/Experiments/Experiment4/Deployment plan/) for LoRa nodes in the QEOP.
+   - [Experiment #4](/Experiments/Experiment4): Contains a [topographic study](/Experiments/Experiment4/GIS Stratford) using QGIS, and a [detailed deployment plan](/Experiments/Experiment4/Deployment plan) for LoRa nodes in the QEOP.
    - [Experiment #5](/Experiments/Experiment5): Basic Pymesh experiments. 
    - [Experiment #6](/Experiments/Experiment6): Basic MQTT experiments.
 
@@ -134,11 +134,17 @@ All the software applications are packed into one [Docker image](/Server/docker-
 
 #### Current consumption analysis
 
-![](Code/Current Analysis/deepsleep.png)
+<p align="center">
+<img src="/Code/Current Analysis/deepsleep.png" width="500">
+</p>
 
-![](Code/Current Analysis/deepsleep-spike.png)
+<p align="center">
+<img src="/Code/Current Analysis/deepsleep-spike.png" width="500">
+</p>
 
-![](Code/Current Analysis/router-node.png)
+<p align="center">
+<img src="/Code/Current Analysis/router-node.png" width="500">
+</p>
 
 ## License
 
