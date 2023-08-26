@@ -25,7 +25,7 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
      The main Micro Python code for the Lopy4, which uses Open Thread for LoRa mesh.
 
-   - [Current Analysis](/Code/Current Analysis)
+   - [Current Analysis](/Code/Current%20Analysis)
 
      Contains the code, schematic and results for the real-time current analysis circuit.
 
@@ -33,7 +33,7 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
 
      Web page that visualises CSV data for LoRa heatmap in the Olympic Park.
 
-   - [VR Headset](/Code/VR Headset)
+   - [VR Headset](/Code/VR%20Headset)
 
      A web page built using [A-Frame](https://aframe.io/) to visualise 360 videos of the QEOP on VR Headsets.
 
@@ -58,7 +58,7 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
    - [Experiment #1](/Experiments/Experiment1): First heatmap between LoRa indoor gateway and MRK1310.
    - [Experiment #2](/Experiments/Experiment2): Heatmap between two LoRa nodes (Both MRK1310).
    - [Experiment #3](/Experiments/Experiment3): Heatmap between two LoRa nodes (Both Lopy4), contains a [geolocated dataset](/Experiments/Experiment3/Results/heatmap/Experiment3-LoRa-RSSI-heatmap-QEOP-OPS.csv).
-   - [Experiment #4](/Experiments/Experiment4): Contains a [topographic study](/Experiments/Experiment4/GIS Stratford) using QGIS, and a [detailed deployment plan](/Experiments/Experiment4/Deployment plan) for LoRa nodes in the QEOP.
+   - [Experiment #4](/Experiments/Experiment4): Contains a [topographic study](/Experiments/Experiment4/GIS%20Stratford) using QGIS, and a [detailed deployment plan](/Experiments/Experiment4/Deployment%20plan) for LoRa nodes in the QEOP.
    - [Experiment #5](/Experiments/Experiment5): Basic Pymesh experiments. 
    - [Experiment #6](/Experiments/Experiment6): Basic MQTT experiments.
 
