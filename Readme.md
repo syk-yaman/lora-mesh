@@ -41,7 +41,8 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
      The data files projected on the physical map including the final calibrated [Base Map](/Code/DataTable/BaseMap.jpg).
 
 3. **Datasets**
-The final datasets as an outcome of this project. There is a [detailed description](/Datasets/Readme.md) available for each dataset.
+
+   The final datasets as an outcome of this project. There is a [detailed description](/Datasets/Readme.md) available for each dataset.
    
 4. **Docs**
 
