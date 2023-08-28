@@ -40,19 +40,22 @@ This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity
    - [Data Table](</Code/DataTable>)
      The data files projected on the physical map including the final calibrated [Base Map](/Code/DataTable/BaseMap.jpg).
 
-3. **Docs**
+3. **Datasets**
+The final datasets as an outcome of this project. There is a [detailed description](/Datasets/Readme.md) available for each dataset.
+   
+4. **Docs**
 
    This folder holds different kinds of documentation and images produced during project life time.
 
-4. **PCB**
+5. **PCB**
 
    The electronic side of the project. This section contains Eagle files and CAM outputs sent to PCB manufacturers. Also, a [CNC manufacturing tutorial](/PCB/CNC) is available.
 
-5. **Server**
+6. **Server**
 
    Docker Composer file for InfluxDB, Grafana and MQTT broker. Basically, all data acquisition is being managed by this Docker image.
 
-6. **Experiments**
+7. **Experiments**
    This section includes the multiple experiments done throughout the project.
 
    - [Experiment #1](/Experiments/Experiment1): First heatmap between LoRa indoor gateway and MRK1310.
