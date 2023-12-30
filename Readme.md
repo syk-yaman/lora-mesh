@@ -1,5 +1,5 @@
 # LoRaMesh: a LoRa mesh network deployed in the Olympic Park, London to sense weather parameters
-
+A dissertation for an MSc degree in [Connected Environments](https://connected-environments.org/) at [University College London](https://www.ucl.ac.uk/prospective-students/graduate/taught-degrees/connected-environments-msc), 2022/2023.
 This project uses [OpenThread](https://openthread.io/) in LoRa to sense humidity, temperate and light in the Queen Elizabeth Olympic Park (QEOP), London. Sensor data is visualised via web dashboards and projected on a physical Olympic Park table using projection mechanism.
 
 |                          Mesh node                           |                The Data Table                 |
